@@ -7,7 +7,7 @@ A fluent plugin that instruments metrics from records and exposes them via web i
 ## Requirements
 
 | fluent-plugin-prometheus | fluentd    | ruby   |
-|--------------------------|------------|--------|
+| ------------------------ | ---------- | ------ |
 | 1.x.y                    | >= v0.14.8 | >= 2.1 |
 | 0.x.y                    | >= v0.12.0 | >= 1.9 |
 
@@ -146,6 +146,8 @@ This plugin uses internal class of Fluentd, so it's easy to break.
 
 - `fluentd_tail_file_position`
     - Current bytes which plugin reads from the file
+- `fluentd_tail_file_size`
+    - Maximin bytes of the file
 - `fluentd_tail_file_inode`
     - inode of the file
 
