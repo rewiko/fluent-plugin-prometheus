@@ -53,6 +53,9 @@ module Fluent::Plugin
         position: @registry.gauge(
           :fluentd_tail_file_position,
           'Current position of file.'),
+        size: @registry.gauge(
+          :fluentd_tail_file_size,
+          'Size of file.'),
         inode: @registry.gauge(
           :fluentd_tail_file_inode,
           'Current inode of file.'),
@@ -80,6 +83,9 @@ module Fluent::Plugin
           label = labels(info, watcher.path)
           @metrics[:inode].set(label, pe.read_inode)
           @metrics[:position].set(label, pe.read_pos)
+          if defined?(pe.read_size)
+            @metrics[:size].set(label, pe.read_size)
+          end
         end
       end
     end
