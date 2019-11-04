@@ -83,7 +83,9 @@ module Fluent::Plugin
           label = labels(info, watcher.path)
           @metrics[:inode].set(label, pe.read_inode)
           @metrics[:position].set(label, pe.read_pos)
-          @metrics[:size].set(label, pe.read_size)
+          if defined?(pe.read_size)
+            @metrics[:size].set(label, pe.read_size)
+          end
         end
       end
     end
